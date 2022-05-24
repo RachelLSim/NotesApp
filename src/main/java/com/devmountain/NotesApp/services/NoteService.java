@@ -9,7 +9,6 @@ import java.util.Optional;
 public interface NoteService {
     @Transactional
     void addNote(NoteDto noteDto, Long userId);
-
     @Transactional
     void updateNoteById(NoteDto noteDto);
 

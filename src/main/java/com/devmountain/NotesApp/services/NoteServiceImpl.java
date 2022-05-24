@@ -1,5 +1,6 @@
 package com.devmountain.NotesApp.services;
 
+import com.devmountain.NotesApp.dtos.UserDto;
 import com.devmountain.NotesApp.dtos.NoteDto;
 import com.devmountain.NotesApp.entities.Note;
 import com.devmountain.NotesApp.entities.User;
@@ -20,13 +21,19 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private NoteRepository noteRepository;
 
-    @Override
+    @Override /////<-----This is not in Nelson's code
     @Transactional
     public void addNote(NoteDto noteDto, Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         Note note = new Note(noteDto);
         userOptional.ifPresent(note::setUser);
         noteRepository.saveAndFlush(note);
+    }
+    @Override ///////////
+    @Transactional
+    public void deleteNoteById(Long noteId){
+        Optional<Note> noteOptional = noteRepository.findById(noteId);
+        noteOptional.ifPresent(note ->  noteRepository.delete(note));
     }
 
     @Override
@@ -55,12 +62,6 @@ public class NoteServiceImpl implements NoteService {
             return Optional.of(new NoteDto(noteOptional.get()));
         }
         return Optional.empty();
-    }
-    @Override
-    @Transactional
-    public void deleteNoteById(Long noteId){
-        Optional<Note> noteOptional = noteRepository.findById(noteId);
-        noteOptional.ifPresent(note ->  noteRepository.delete(note));
     }
 
 }

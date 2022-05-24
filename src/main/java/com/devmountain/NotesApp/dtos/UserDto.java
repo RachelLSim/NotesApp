@@ -1,5 +1,5 @@
 package com.devmountain.NotesApp.dtos;
-
+import javax.persistence.*;
 import com.devmountain.NotesApp.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -10,17 +10,16 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/notes")
+@RequestMapping("/api/v1/notes")
 public class NoteController {
     @Autowired
     private NoteService noteService;
-
-    @GetMapping("/user/{userId}")
+    //get all notes by user
+    @GetMapping("/users/{userId}")
     public List<NoteDto> getNotesByUser(@PathVariable Long userId){
         return noteService.getAllNoteByUserID(userId);
     }
-
-    @PostMapping("/user/{userId}")
+    @PostMapping("/users/{userId}")
     public void addNote(@RequestBody NoteDto noteDto, @PathVariable Long userId){
         noteService.addNote(noteDto, userId);
     }

@@ -1,12 +1,12 @@
-const loginForm = document.getElementById('login-form');
-const loginUsername = document.getElementById('login-username')
-const loginPassword = document.getElementById('login-password')
+const loginForm = document.getElementById("login-form");
+const loginUsername = document.getElementById("login-username")
+const loginPassword = document.getElementById("login-password")
 
 const headers = {
     'Content-Type':'application/json'
 }
 
-const baseUrl = 'http://localhost8080/api/v1/users'
+const baseUrl = 'http://localhost:1000/api/v1/users'
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
         username: loginUsername.value,
         password: loginPassword.value
     }
-    const response = await fetch(`${baseUrl}/login`, {
+    const response = await fetch(`http://localhost:1000/api/v1/users/login`, {
         method:"POST",
         body: JSON.stringify(bodyObj),
         headers: headers

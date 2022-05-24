@@ -6,16 +6,17 @@ import com.devmountain.NotesApp.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class NoteDto implements Serializable {
     private Long id;
     private String body;
-    private UserDto userDto;
+    private UserDto user;
 
     public NoteDto(Note note) {
         if (note.getId() != null) {
