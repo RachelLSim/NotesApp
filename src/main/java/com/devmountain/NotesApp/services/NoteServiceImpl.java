@@ -21,7 +21,7 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private NoteRepository noteRepository;
 
-    @Override /////<-----This is not in Nelson's code
+    @Override
     @Transactional
     public void addNote(NoteDto noteDto, Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
@@ -29,7 +29,7 @@ public class NoteServiceImpl implements NoteService {
         userOptional.ifPresent(note::setUser);
         noteRepository.saveAndFlush(note);
     }
-    @Override ///////////
+    @Override
     @Transactional
     public void deleteNoteById(Long noteId){
         Optional<Note> noteOptional = noteRepository.findById(noteId);

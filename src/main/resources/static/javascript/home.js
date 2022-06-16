@@ -9,6 +9,22 @@ const noteContainer = document.getElementById("note-container")
 //Modal Elements
 let noteBody = document.getElementById("note-body")
 let updateNoteBtn = document.getElementById("update-note-button")
+let modal = document.getElementById("node-edit-modal")
+let closeModal = document.getElementById("modal-close")
+
+updateNoteBtn.onclick = function(){
+    modal.style.display = "block"
+}
+closeModal.onclick = function(){
+    modal.style.display = "none"
+}
+window.onclick = function(e){
+    if(e.target == modal){
+        modal.style.display = "none"
+    }
+}
+
+
 
 const headers = {
     'Content-Type': 'application/json'
